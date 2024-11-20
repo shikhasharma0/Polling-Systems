@@ -1,0 +1,16 @@
+\CREATE TABLE polls (
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE poll_options (
+  id SERIAL PRIMARY KEY,
+  poll_id INT REFERENCES polls(id) ON DELETE CASCADE,
+  option VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE votes (
+  id SERIAL PRIMARY KEY,
+  poll_id INT REFERENCES polls(id) ON DELETE CASCADE,
+  option VARCHAR(255) NOT NULL
+);
